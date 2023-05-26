@@ -7,11 +7,12 @@
 
         <script src="hhtps://cdn.tailwindcss.com"></script>
 
-        <title>Puddle</title>
+        <title>{%block title%}{%endblock%} | Puddle</title>
     </head>
     <body>
         <div class="px-6 py-6">
-            
+            {%block content%}
+            {%endblock%}
         </div>
     </body>
 </html>
