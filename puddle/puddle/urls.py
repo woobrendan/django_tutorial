@@ -21,9 +21,10 @@ from django.urls import path, include
 
 from core.views import index, contact
 
+#include works like middleware and uses the passed in file
+
 urlpatterns = [
-    path('', index, name="index"),
+    path('', index, include('core.urls')),
     path('items/', include('item.urls')),
-    path('contact/', contact, name="contact"),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
