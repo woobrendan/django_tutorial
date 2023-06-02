@@ -15,13 +15,14 @@ def contact(request):
     return render(request, 'core/contact.html')
 
 def signup(request):
+    # if method is post, validate the form and save. else return signup form
     if request.method == 'POST':
         form = SignupForm(request.POST)
 
         if form.is_valid():
             form.save()
 
-            return redirect(('/login/'))
+            return redirect('/login/')
     else:
         form = SignupForm()
     return render(request, 'core/signup.html', {
