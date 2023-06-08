@@ -8,6 +8,7 @@ from .forms import NewItemForm, EditItemForm
 def items(request):
     query = request.GET.get('query', '')
     categories = Category.objects.all()
+    category_id = request.GET.get('category', 0)
     items = Item.objects.filter(is_sold=False)
 
     if query:
@@ -16,7 +17,8 @@ def items(request):
     return render(request, 'item/items.html', {
         'items': items,
         'query': query,
-        'categories': categories
+        'categories': categories,
+        'category_id': int(category_id)
     })
 
 def detail(request, pk):
